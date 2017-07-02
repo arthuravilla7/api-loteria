@@ -6,19 +6,20 @@ function realizarSorteio(req, res, next){
     const max = 61;
     //sorteio = [60, 4, 1, 6, 5, 6]; pra mocar um vencedor
     
-    for(var i = 0; i < 6; i++){
-      sorteio[i] = Math.floor((Math.random() * 60) + 1);
-      //falta retirar repeticao do array
+    while(sorteio.length < 6){
+      let numero = Math.floor((Math.random() * 60) + 1); //verificar se inclui o 60
+      if (sorteio.indexOf(numero) === -1) {
+			  sorteio.push(numero);
+		  }
     }
-    console.log(sorteio);
-    next()
+    //console.log(sorteio);
+    res.status(200).json(sorteio);
     
 }
 
 
 function verificarGanhador(req, res, next){
-  var array = sorteio
-  //console.log(array)
+  var array = sorteio;
    Apostador.find().where('numero').all(array).exec(function(error, data){ //verifica se algum documento de apostador possui todos os numeros sorteados no array
     if(error){
       console.log(error);

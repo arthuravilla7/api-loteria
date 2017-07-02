@@ -14,7 +14,6 @@ module.exports = function(server){
   server.get('/sorteio', sorteioService.verificarGanhador);*/
 
   router.route('/sorteio').get(sorteioService.realizarSorteio);
-  router.route('/sorteio').get(sorteioService.verificarGanhador);
-  // const billingSummaryService = require('../api/billingSummary/billingSummaryService')
-  // router.route('/billingSummary').get(billingSummaryService.getSummary)
+  router.route('/sorteio/ganhador').get(sorteioService.verificarGanhador);
+  router.route('/apostador').delete(apostadorService.deletarTodos);
 };
