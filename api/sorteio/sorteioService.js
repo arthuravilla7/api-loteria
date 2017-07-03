@@ -5,9 +5,9 @@ function realizarSorteio(req, res, next){
     const min = 1;
     const max = 61;
     //sorteio = [60, 4, 1, 6, 5, 6]; pra mocar um vencedor
-    
+    sorteio = [];
     while(sorteio.length < 6){
-      let numero = Math.floor((Math.random() * 60) + 1); //verificar se inclui o 60
+      let numero = Math.floor((Math.random() * 60) + 1);
       if (sorteio.indexOf(numero) === -1) {
 			  sorteio.push(numero);
 		  }
